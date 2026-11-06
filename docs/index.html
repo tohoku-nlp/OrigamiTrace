@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OriTrace: Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning</title>
+  <meta name="description" content="OriTrace is a benchmark of real step-by-step origami images, textual entries, and difficulty annotations for evaluating procedural state-transition reasoning, with autonomous and human-guided tasks.">
+  <meta property="og:title" content="OriTrace: Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning">
+  <meta property="og:description" content="348 origami models, 7,221 real images of intermediate folding states, and two state-transition tasks.">
+  <meta property="og:image" content="static/images/overview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f7f9;
+      --border: #e3e6ea;
+      --text: #1b1f24;
+      --muted: #5b6470;
+      --accent: #2f5fa7;
+      --accent-2: #4a8a3a;
+      --btn-bg: #1b1f24;
+      --btn-text: #ffffff;
+      --code-bg: #f1f3f5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #111418;
+        --surface: #191d22;
+        --border: #2a3038;
+        --text: #e7eaee;
+        --muted: #9aa3ad;
+        --accent: #7ea6e6;
+        --accent-2: #8cc77a;
+        --btn-bg: #e7eaee;
+        --btn-text: #111418;
+        --code-bg: #1d2228;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #111418;
+      --surface: #191d22;
+      --border: #2a3038;
+      --text: #e7eaee;
+      --muted: #9aa3ad;
+      --accent: #7ea6e6;
+      --accent-2: #8cc77a;
+      --btn-bg: #e7eaee;
+      --btn-text: #111418;
+      --code-bg: #1d2228;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+    header { padding: 56px 0 24px; text-align: center; }
+    .venue { color: var(--muted); font-size: 14px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 12px; }
+    h1 { font-size: clamp(26px, 4.4vw, 40px); line-height: 1.2; margin: 0 0 6px; font-weight: 700; }
+    h1 .name { color: var(--accent); }
+    .subtitle { font-size: clamp(17px, 2.4vw, 22px); color: var(--muted); margin: 0 0 24px; font-weight: 500; }
+    .authors { font-size: 17px; margin: 0 0 6px; }
+    .authors span { white-space: nowrap; margin: 0 8px; }
+    .affils { color: var(--muted); font-size: 14px; margin: 0 0 4px; }
+    .affils span { white-space: nowrap; margin: 0 8px; }
+    .contact { color: var(--muted); font-size: 14px; font-family: "JetBrains Mono", ui-monospace, monospace; margin: 4px 0 0; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 24px 0 0; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: 999px;
+      background: var(--btn-bg); color: var(--btn-text);
+      font-weight: 600; font-size: 15px;
+    }
+    .btn:hover { text-decoration: none; opacity: .88; }
+    .btn.disabled { opacity: .45; pointer-events: none; }
+    .btn svg { width: 17px; height: 17px; fill: currentColor; }
+    .btn small { font-weight: 500; font-size: 12px; opacity: .85; }
+    section { padding: 36px 0; border-top: 1px solid var(--border); }
+    section:first-of-type { border-top: 0; }
+    h2 { font-size: 26px; margin: 0 0 16px; text-align: center; }
+    h3 { font-size: 18px; margin: 24px 0 8px; }
+    p { margin: 0 0 14px; }
+    .abstract p { text-align: justify; hyphens: auto; }
+    figure { margin: 8px 0 0; }
+    figure img { width: 100%; height: auto; display: block; border-radius: 8px; background: #fff; }
+    figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; text-align: center; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 24px; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 12px; text-align: center; }
+    .stat b { display: block; font-size: 26px; line-height: 1.2; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    .tasks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    .task { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+    .task h3 { margin: 0 0 6px; }
+    .task.t1 h3 { color: var(--accent); }
+    .task.t2 h3 { color: var(--accent-2); }
+    .task p { margin: 0; font-size: 15px; }
+    .levels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
+    .level { text-align: center; font-size: 14px; }
+    .level img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+    .level b { display: block; margin-top: 6px; }
+    .level span { color: var(--muted); }
+    .table-scroll { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    thead th { font-weight: 600; border-bottom: 2px solid var(--text); }
+    tr.group td { font-style: italic; color: var(--muted); padding-top: 14px; }
+    .note { color: var(--muted); font-size: 14px; margin-top: 10px; }
+    pre {
+      background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 16px; overflow-x: auto; font: 13px/1.55 "JetBrains Mono", ui-monospace, monospace; margin: 0;
+    }
+    footer { border-top: 1px solid var(--border); padding: 28px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
+    @media (max-width: 720px) {
+      header { padding-top: 36px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .tasks { grid-template-columns: 1fr; }
+      .levels { grid-template-columns: repeat(2, 1fr); }
+      .abstract p { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <p class="venue">NeurIPS 2026 · Track on Evaluations and Datasets</p>
+    <h1><span class="name">OriTrace</span></h1>
+    <p class="subtitle">Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning</p>
+    <p class="authors">
+      <span>Ikumi Numaya<sup>1</sup></span>
+      <span>Reina Akama<sup>1,2,3</sup></span>
+      <span>Kise Yoshida<sup>1</sup></span>
+      <span>Yuka Saito<sup>1</sup></span>
+      <span>Sumika Tsuda<sup>1</sup></span>
+      <span>Takahiro Shimizu<sup>1</sup></span>
+      <span>Miori Sagara<sup>4</sup></span>
+      <span>Jun Suzuki<sup>1,3,5</sup></span>
+    </p>
+    <p class="affils">
+      <span><sup>1</sup>Tohoku University</span>
+      <span><sup>2</sup>NINJAL</span>
+      <span><sup>3</sup>RIKEN</span>
+      <span><sup>4</sup>Baobab, Inc.</span>
+      <span><sup>5</sup>NII LLMC</span>
+    </p>
+    <p class="contact">is-failab-research@grp.tohoku.ac.jp</p>
+    <div class="links">
+      <a class="btn disabled" aria-disabled="true">
+        <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6zm8 1.5V8h4.5zM8 12h8v1.5H8zm0 3h8v1.5H8zm0 3h5v1.5H8z"/></svg>
+        Paper <small>(coming soon)</small>
+      </a>
+      <a class="btn disabled" aria-disabled="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 4.6 3 6.5v11C3 19.4 7 21 12 21s9-1.6 9-3.5v-11C21 4.6 17 3 12 3zm0 1.5c4.4 0 7.5 1.3 7.5 2s-3.1 2-7.5 2-7.5-1.3-7.5-2 3.1-2 7.5-2zM4.5 9c1.6 1 4.4 1.5 7.5 1.5s5.9-.5 7.5-1.5v3c0 .7-3.1 2-7.5 2s-7.5-1.3-7.5-2zm0 5.5c1.6 1 4.4 1.5 7.5 1.5s5.9-.5 7.5-1.5v3c0 .7-3.1 2-7.5 2s-7.5-1.3-7.5-2z"/></svg>
+        Dataset <small>(coming soon)</small>
+      </a>
+      <a class="btn" href="https://github.com/tohoku-nlp/OriTrace">
+        <svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+        Code
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <figure>
+        <img src="static/images/overview.png" alt="Overview of the OriTrace benchmark: a reference image sequence with textual entries from a start state to a target state, Task 1 where the agent directly receives the procedure, Task 2 where a human instructor guides the agent, and a comparison with prior work." width="2400" height="1258">
+        <figcaption>Overview of the benchmark tasks and how they relate to typical manipulation benchmarks and robotic origami systems.</figcaption>
+      </figure>
+    </section>
+
+    <section class="abstract">
+      <h2>Abstract</h2>
+      <p>General-purpose embodied AI systems are increasingly expected to interpret multimodal instructions and perform fine-grained physical tasks. However, many manipulation benchmarks provide limited support for jointly evaluating procedural correctness, local geometric sensitivity, and human-guided correction. We propose origami as a benchmark based on real images for procedural state-transition reasoning. Origami requires precise operations such as tucking, inserting, reversing, and folding overlapping layers, making it a focused domain for studying physical state transitions. We introduce a dataset of step-by-step folding images, textual entries, and difficulty annotations, and we define two tasks, i.e., autonomous state transitions from multimodal instructions and human-guided collaborative transitions. Unlike crease-pattern- or diagram-based origami benchmarks, the proposed benchmark is grounded in photographs of actual intermediate folding states. In an initial simulator-based evaluation, we use three multimodal LLM controllers to evaluate procedural understanding, action-interface grounding, and retry-based correction.</p>
+    </section>
+
+    <section>
+      <h2>Dataset</h2>
+      <div class="stats">
+        <div class="stat"><b>348</b><span>origami models</span></div>
+        <div class="stat"><b>7,221</b><span>real state images</span></div>
+        <div class="stat"><b>2</b><span>state-transition tasks</span></div>
+        <div class="stat"><b>5</b><span>difficulty levels</span></div>
+      </div>
+      <p>Each origami model is an ordered sequence of photographs of intermediate paper states, from paper preparation to the completed model. For each non-final step, a human-written textual entry describes the operation required to reach the next state; the final step marks completion. Images were captured in a controlled, fiducial-assisted setup, and every transition was checked for foldability, specification conformance, and text quality.</p>
+      <figure>
+        <img src="static/images/dataset_example.png" alt="Example from the dataset: the Long-Horned Samurai Helmet, shown as a sequence of real images with textual entries." width="2400" height="594">
+        <figcaption>Example from the dataset: “Tsunonaga-Kabuto” (long-horned samurai helmet).</figcaption>
+      </figure>
+      <h3>Difficulty levels</h3>
+      <div class="levels">
+        <div class="level"><img src="static/images/difficulty1.jpg" alt="Example of a Level 1 model" loading="lazy"><b>Level 1 – Beginner</b><span>58 models (16.7%)</span></div>
+        <div class="level"><img src="static/images/difficulty2_2.jpg" alt="Example of a Level 2 model" loading="lazy"><b>Level 2 – Elementary</b><span>131 models (37.6%)</span></div>
+        <div class="level"><img src="static/images/difficulty3_1.jpg" alt="Example of a Level 3 model" loading="lazy"><b>Level 3 – Intermediate</b><span>144 models (41.4%)</span></div>
+        <div class="level"><img src="static/images/difficulty4.jpg" alt="Example of a Level 4 model" loading="lazy"><b>Level 4 – Advanced</b><span>15 models (4.3%)</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tasks</h2>
+      <p>A benchmark instance pairs a start state and a later target state from the same procedure, together with the reference images and textual entries between them.</p>
+      <div class="tasks">
+        <div class="task t1">
+          <h3>Task 1: Autonomous Origami State Transition</h3>
+          <p>The agent directly receives the reference image sequence, textual instructions, and target state, and must execute each transition. After a failed attempt it receives fixed feedback and may retry.</p>
+        </div>
+        <div class="task t2">
+          <h3>Task 2: Human-Guided Collaborative Origami State Transition</h3>
+          <p>The agent has no direct access to the reference procedure. A human instructor who sees the procedure guides it step by step in natural language, answers clarification questions, and gives corrective feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Results</h2>
+      <p>We evaluate three multimodal LLM controllers that operate an origami simulator through structured commands, on all 348 procedures with the same start–target pairs in both tasks.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Episode-SR</th><th>Trans-SR</th><th>First-Att-SR</th><th>Avg Att/Trans ↓</th><th>Retry-SR</th></tr>
+          </thead>
+          <tbody>
+            <tr class="group"><td colspan="6">Task 1</td></tr>
+            <tr><td>GPT 5.6 Sol</td><td>22.7%</td><td>34.1%</td><td>61.3%</td><td>1.68</td><td>38.2%</td></tr>
+            <tr><td>Gemma 4 31B</td><td>3.74%</td><td>6.39%</td><td>26.3%</td><td>2.44</td><td>8.22%</td></tr>
+            <tr><td>Gemma 3 12B IT</td><td>1.72%</td><td>0.758%</td><td>2.77%</td><td>2.93</td><td>2.56%</td></tr>
+            <tr class="group"><td colspan="6">Task 2</td></tr>
+            <tr><td>GPT 5.6 Sol</td><td>25.6%</td><td>40.3%</td><td>58.5%</td><td>1.69</td><td>50.9%</td></tr>
+            <tr><td>Gemma 4 31B</td><td>3.45%</td><td>8.46%</td><td>28.6%</td><td>2.36</td><td>14.1%</td></tr>
+            <tr><td>Gemma 3 12B IT</td><td>2.87%</td><td>3.03%</td><td>14.3%</td><td>2.69</td><td>4.79%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">SR: success rate. Episode-SR counts procedure segments completed from the start state to the target state; transition-level metrics diagnose partial progress and retry-based correction. See the paper for definitions and significance tests.</p>
+    </section>
+
+    <section>
+      <h2>BibTeX</h2>
+<pre><code>@inproceedings{numaya2026oritrace,
+  title     = {Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning},
+  author    = {Numaya, Ikumi and Akama, Reina and Yoshida, Kise and Saito, Yuka and
+               Tsuda, Sumika and Shimizu, Takahiro and Sagara, Miori and Suzuki, Jun},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026}
+}</code></pre>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    The dataset is released under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+  </footer>
+</body>
+</html>
