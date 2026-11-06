@@ -1,4 +1,4 @@
-# OriTrace
+# OrigamiTrace
 
 **Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning** (NeurIPS 2026, Track on Evaluations and Datasets)
 
