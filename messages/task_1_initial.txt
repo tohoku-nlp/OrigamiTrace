@@ -1,0 +1,1 @@
+I will provide all reference images as separate image files and all textual instructions in a single CSV file. Please output only OK.

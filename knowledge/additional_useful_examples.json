@@ -1,0 +1,897 @@
+{
+  "additional_examples": [
+    {
+      "category": "combinational_supported",
+      "coverage_symbol": "○",
+      "note": "These examples combine fold and make_crease, including folds that also insert the flap. Coordinates are schematic and should be re-estimated from the current observation.",
+      "examples": [
+        {
+          "name": "split_cross_precrease_pattern",
+          "covers": [
+            { "ja": "交差する折り線群を中心で分割した折り目", "en": "crossing crease pattern split at the center" },
+            { "ja": "放射状の折り", "en": "radial folds" },
+            { "ja": "折り目をつける", "en": "precrease" }
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0.85, 0],
+                    "source_point": [0.4, 0.25],
+                    "target_point": [0.4, -0.25],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [-0.85, 0],
+                    "source_point": [-0.4, -0.25],
+                    "target_point": [-0.4, 0.25],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0, 0.85],
+                    "source_point": [0.25, 0.4],
+                    "target_point": [-0.25, 0.4],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0, -0.85],
+                    "source_point": [-0.25, -0.4],
+                    "target_point": [0.25, -0.4],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "squash_fold_visible_pocket",
+          "covers": [
+            { "ja": "つぶし折り", "en": "squash fold" },
+            { "ja": "開いてつぶす", "en": "open and flatten" },
+            { "ja": "平面内で点を寄せる", "en": "in-plane movement" }
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.65],
+                    "crease_line_edge2": [-0.5, 0.35],
+                    "source_point": [-0.55, 0.2],
+                    "target_point": [0.05, 0.2],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.65],
+                    "crease_line_edge2": [0.5, 0.35],
+                    "source_point": [0.55, 0.2],
+                    "target_point": [-0.05, 0.2],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.65],
+                    "crease_line_edge2": [-0.5, 0.35],
+                    "source_point": [-0.45, 0.25],
+                    "target_point": [0, 0.05],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.65],
+                    "crease_line_edge2": [0.5, 0.35],
+                    "source_point": [0.45, 0.25],
+                    "target_point": [0, 0.05],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "rabbit_ear_fold_shared_vertex",
+          "covers": [
+            { "ja": "兎耳折り", "en": "rabbit ear fold" },
+            { "ja": "端点共有の同時折り", "en": "shared-vertex simultaneous fold" }
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0.75],
+                    "crease_line_edge2": [-0.55, -0.45],
+                    "source_point": [-0.45, 0.05],
+                    "target_point": [-0.1, 0.2],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0.75],
+                    "crease_line_edge2": [0.55, -0.45],
+                    "source_point": [0.45, 0.05],
+                    "target_point": [0.1, 0.2],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0.75],
+                    "crease_line_edge2": [0, -0.55],
+                    "source_point": [0.18, 0.1],
+                    "target_point": [-0.18, 0.1],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "petal_fold_approximation",
+          "covers": [
+            { "ja": "花弁折り", "en": "petal fold" },
+            { "ja": "鳥の基本形", "en": "bird base" },
+            { "ja": "鶴の基本形", "en": "crane base" }
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.75],
+                    "crease_line_edge2": [-0.45, 0.25],
+                    "source_point": [-0.6, 0.0],
+                    "target_point": [0.0, 0.0],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.75],
+                    "crease_line_edge2": [0.45, 0.25],
+                    "source_point": [0.6, 0.0],
+                    "target_point": [0.0, 0.0],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.75],
+                    "crease_line_edge2": [-0.45, 0.25],
+                    "source_point": [-0.45, 0.05],
+                    "target_point": [-0.15, 0.25],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.75],
+                    "crease_line_edge2": [0.45, 0.25],
+                    "source_point": [0.45, 0.05],
+                    "target_point": [0.15, 0.25],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [-0.25, 0.25],
+                    "crease_line_edge2": [0.25, 0.25],
+                    "source_point": [0, 0.65],
+                    "target_point": [0, -0.1],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "square_base_collapse",
+          "covers": [
+            { "ja": "四角ベース", "en": "preliminary base / square base" },
+            { "ja": "中心に集める畳み込み", "en": "collapse to a point" }
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.9, 0],
+                    "crease_line_edge2": [0.9, 0],
+                    "source_point": [0, 0.65],
+                    "target_point": [0, -0.65],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.9],
+                    "crease_line_edge2": [0, 0.9],
+                    "source_point": [0.65, 0],
+                    "target_point": [-0.65, 0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0.75, 0.75],
+                    "source_point": [0.8, 0.0],
+                    "target_point": [0, 0.75],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [-0.75, 0.75],
+                    "source_point": [-0.8, 0.0],
+                    "target_point": [0, 0.75],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0, -0.75],
+                    "source_point": [0, -0.8],
+                    "target_point": [0, 0.75],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "waterbomb_base_collapse",
+          "covers": [
+            { "ja": "風船ベース", "en": "waterbomb base" },
+            { "ja": "中心共有の同時折り", "en": "shared-center simultaneous fold" }
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.9, -0.9],
+                    "crease_line_edge2": [0.9, 0.9],
+                    "source_point": [0.7, -0.7],
+                    "target_point": [-0.7, 0.7],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [-0.9, 0.9],
+                    "crease_line_edge2": [0.9, -0.9],
+                    "source_point": [0.7, 0.7],
+                    "target_point": [-0.7, -0.7],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0.8, 0],
+                    "source_point": [0.55, 0.35],
+                    "target_point": [0.05, 0.75],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [-0.8, 0],
+                    "source_point": [-0.55, 0.35],
+                    "target_point": [-0.05, 0.75],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0],
+                    "crease_line_edge2": [0, -0.8],
+                    "source_point": [0, -0.65],
+                    "target_point": [0, 0.75],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "fish_base_like_fold",
+          "covers": [
+            { "ja": "魚の基本形", "en": "fish base" },
+            { "ja": "兎耳折り", "en": "rabbit ear fold" },
+            { "ja": "凧形折りの応用", "en": "kite-fold extension" }
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.9],
+                    "crease_line_edge2": [0.5, 0.45],
+                    "source_point": [0.85, 0.0],
+                    "target_point": [0.05, 0.0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.9],
+                    "crease_line_edge2": [-0.5, 0.45],
+                    "source_point": [-0.85, 0.0],
+                    "target_point": [-0.05, 0.0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0.55],
+                    "crease_line_edge2": [-0.35, -0.05],
+                    "source_point": [-0.3, 0.25],
+                    "target_point": [0.0, 0.25],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, 0.55],
+                    "crease_line_edge2": [0.35, -0.05],
+                    "source_point": [0.3, 0.25],
+                    "target_point": [0.0, 0.25],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "locking_fold_with_insert",
+          "covers": [
+            { "ja": "ロック折り", "en": "locking fold" },
+            { "ja": "かぶせ折り", "en": "wrap fold / overlap fold" },
+            { "ja": "差し込み", "en": "tuck / insert" }
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.65, 0.25],
+                    "crease_line_edge2": [0.65, 0.25],
+                    "source_point": [0, 0.8],
+                    "target_point": [0, -0.25],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley",
+                    "pocket_point": [0, 0.25],
+                    "destination_layer": [1, 2]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "conditionally_supported",
+      "coverage_symbol": "△",
+      "note": "These examples require visible, locally reachable regions. They may return executable: 0 if the required pocket, layer stack, or motion is not visible or physically compatible.",
+      "examples": [
+        {
+          "name": "inside_reverse_fold_visible_flap",
+          "covers": [
+            { "ja": "中割り折り", "en": "inside reverse fold" }
+          ],
+          "assumptions": [
+            "The flap to be reversed is open or sufficiently visible.",
+            "The relevant layers can be selected at source_point."
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.3, 0.0],
+                    "crease_line_edge2": [0.3, 0.0],
+                    "source_point": [0, 0.55],
+                    "target_point": [0, -0.55],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [-0.3, 0.0],
+                    "crease_line_edge2": [0.3, 0.0],
+                    "source_point": [0, 0.55],
+                    "target_point": [0, -0.55],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.3, 0.0],
+                    "crease_line_edge2": [0.3, 0.0],
+                    "source_point": [0, 0.55],
+                    "target_point": [0, -0.15],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "outside_reverse_fold_visible_flap",
+          "covers": [
+            { "ja": "外割り折り", "en": "outside reverse fold" }
+          ],
+          "assumptions": [
+            "The flap is visible from the current view.",
+            "The selected layers can move outside the model without crossing hidden layers."
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.35, 0.1],
+                    "crease_line_edge2": [0.35, 0.1],
+                    "source_point": [0, 0.65],
+                    "target_point": [0, -0.45],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.35, 0.1],
+                    "crease_line_edge2": [0.35, 0.1],
+                    "source_point": [0, 0.65],
+                    "target_point": [0, -0.2],
+                    "source_layers": ["all"],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "open_pocket_and_flatten",
+          "covers": [
+            { "ja": "ポケットを開く", "en": "open pocket" },
+            { "ja": "開いてつぶす", "en": "open and flatten" }
+          ],
+          "assumptions": [
+            "The pocket opening and both side flaps are visible.",
+            "The pocket can be flattened without hidden layer reasoning."
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.55],
+                    "crease_line_edge2": [-0.45, 0.25],
+                    "source_point": [-0.45, 0.1],
+                    "target_point": [-0.05, 0.0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.55],
+                    "crease_line_edge2": [0.45, 0.25],
+                    "source_point": [0.45, 0.1],
+                    "target_point": [0.05, 0.0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "visible_pull_out_fold",
+          "covers": [
+            { "ja": "引き出し折り", "en": "pull-out fold" }
+          ],
+          "assumptions": [
+            "The layer to be pulled out is visible at the edge.",
+            "The movement does not require hidden internal layer ordering."
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.2, -0.55],
+                    "crease_line_edge2": [-0.2, 0.55],
+                    "source_point": [-0.05, 0.0],
+                    "target_point": [-0.65, 0.0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "swivel_fold_visible_corner",
+          "covers": [
+            { "ja": "回し折り", "en": "swivel fold" }
+          ],
+          "assumptions": [
+            "The swivel region is visible.",
+            "The source_point-to-target_point motion is geometrically consistent with the crease segment."
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.25, -0.4],
+                    "crease_line_edge2": [0.45, 0.25],
+                    "source_point": [0.55, -0.25],
+                    "target_point": [-0.2, 0.45],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.25, -0.4],
+                    "crease_line_edge2": [0.45, 0.25],
+                    "source_point": [0.55, -0.25],
+                    "target_point": [0.15, 0.35],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "inside_crimp_visible",
+          "covers": [
+            { "ja": "中割り段折り", "en": "inside crimp" },
+            { "ja": "段違い折り", "en": "crimp fold" }
+          ],
+          "assumptions": [
+            "The crimped layers are visible or opened.",
+            "The internal reversal does not require hidden layer inference."
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.35, 0.25],
+                    "crease_line_edge2": [0.35, 0.25],
+                    "source_point": [0, 0.65],
+                    "target_point": [0, 0.05],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.35, -0.05],
+                    "crease_line_edge2": [0.35, -0.05],
+                    "source_point": [0, 0.15],
+                    "target_point": [0, -0.35],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "open_sink_approximation",
+          "covers": [
+            { "ja": "沈め折り", "en": "open sink fold" }
+          ],
+          "assumptions": [
+            "This represents an open sink approximation.",
+            "The sink region is open and visible.",
+            "Closed sink folds with hidden internal layers are not directly covered."
+          ],
+          "commands": [
+            {
+              "command_name": "make_crease",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0.55],
+                    "crease_line_edge2": [0.55, 0],
+                    "source_point": [0.45, 0.45],
+                    "target_point": [0, 0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0.55, 0],
+                    "crease_line_edge2": [0, -0.55],
+                    "source_point": [0.45, -0.45],
+                    "target_point": [0, 0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.55],
+                    "crease_line_edge2": [-0.55, 0],
+                    "source_point": [-0.45, -0.45],
+                    "target_point": [0, 0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [-0.55, 0],
+                    "crease_line_edge2": [0, 0.55],
+                    "source_point": [-0.45, 0.45],
+                    "target_point": [0, 0],
+                    "source_layers": ["all"],
+                    "theta": 180,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, 0.55],
+                    "crease_line_edge2": [0.55, 0],
+                    "source_point": [0.35, 0.35],
+                    "target_point": [0, 0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0.55, 0],
+                    "crease_line_edge2": [0, -0.55],
+                    "source_point": [0.35, -0.35],
+                    "target_point": [0, 0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.55],
+                    "crease_line_edge2": [-0.55, 0],
+                    "source_point": [-0.35, -0.35],
+                    "target_point": [0, 0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [-0.55, 0],
+                    "crease_line_edge2": [0, 0.55],
+                    "source_point": [-0.35, 0.35],
+                    "target_point": [0, 0],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "mountain"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "frog_base_local_squash_sequence",
+          "covers": [
+            { "ja": "蛙の基本形", "en": "frog base" },
+            { "ja": "つぶし折り", "en": "squash fold" },
+            { "ja": "花弁折り", "en": "petal fold" }
+          ],
+          "assumptions": [
+            "This represents one visible local squash/petal component of a frog base.",
+            "The full frog base requires repeating similar operations on multiple flaps."
+          ],
+          "commands": [
+            {
+              "command_name": "rotate_3d",
+              "parameters": {
+                "theta_x": 0,
+                "theta_y": 0,
+                "theta_z": 90
+              }
+            },
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [0, -0.65],
+                    "crease_line_edge2": [-0.45, 0.35],
+                    "source_point": [-0.4, 0.2],
+                    "target_point": [-0.05, 0.05],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  },
+                  {
+                    "crease_line_edge1": [0, -0.65],
+                    "crease_line_edge2": [0.45, 0.35],
+                    "source_point": [0.4, 0.2],
+                    "target_point": [0.05, 0.05],
+                    "source_layers": [1],
+                    "theta": 0,
+                    "fold_type": "valley"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "hidden_pocket_insert_when_entry_visible",
+          "covers": [
+            { "ja": "内部ポケットへ差し込む", "en": "insert into hidden pocket" },
+            { "ja": "ポケット操作", "en": "pocket operation" }
+          ],
+          "assumptions": [
+            "Only the visible pocket entrance is used.",
+            "The destination layer relation at pocket_point is visible.",
+            "If the required destination is fully hidden, this command should return executable: 0."
+          ],
+          "commands": [
+            {
+              "command_name": "fold",
+              "parameters": {
+                "fold_infos": [
+                  {
+                    "crease_line_edge1": [-0.6, -0.15],
+                    "crease_line_edge2": [0.6, -0.15],
+                    "source_point": [0, -0.55],
+                    "target_point": [0, 0.15],
+                    "source_layers": [1],
+                    "theta": 180,
+                    "fold_type": "valley",
+                    "pocket_point": [0, 0],
+                    "destination_layer": [1, 2]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

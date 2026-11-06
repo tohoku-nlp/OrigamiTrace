@@ -1,0 +1,213 @@
+{
+  "global_settings": {
+    "coordinate_system": "normalized_current_view",
+    "origin": "current_projected_center_of_mass",
+    "unit": "current_view_max_xy_extent_from_center",
+    "angle_unit": "degree",
+    "layer_order": "visible_top_to_bottom",
+    "view_axes": {
+      "x_axis": "rightward in the current view",
+      "y_axis": "upward in the current view",
+      "z_axis": "toward the viewer"
+    },
+    "coordinate_normalization": {
+      "description": "Coordinates are centered at the current projected center of mass in the view. The scale is the larger of the maximum absolute x-extent and y-extent from that center, and is set to 1 for both axes.",
+      "note": "The coordinate scale is recomputed from each updated observation."
+    },
+    "rotation_convention": {
+      "rotation_range": [-180, 180],
+      "positive_direction": "right-hand rule",
+      "rotation_order": "x_then_y_then_z",
+      "note": "Clockwise rotation in the current image plane is theta_z = -90."
+    }
+  },
+  "command_invocation_format": {
+    "description": "Each command is represented by command_name and parameters.",
+    "format": {
+      "command_name": "String",
+      "parameters": "Object"
+    }
+  },
+  "command_return_format": {
+    "description": "Each command returns executable. If executable is 0, the physical state is unchanged.",
+    "format": {
+      "executable": "Integer, 0 or 1",
+      "observation": "Updated observation if the accepted command changes the state; otherwise the current observation.",
+      "error_type": "Optional string when executable is 0.",
+      "message": "Optional explanation."
+    }
+  },
+  "fold_info_schema": {
+    "description": "A fold_info is a self-contained specification of one fold.",
+    "required_fields": [
+      {
+        "name": "crease_line_edge1",
+        "type": "List[Number, Number]",
+        "description": "One endpoint of the intended fold segment as a 2D coordinate."
+      },
+      {
+        "name": "crease_line_edge2",
+        "type": "List[Number, Number]",
+        "description": "The other endpoint of the intended fold segment as a 2D coordinate."
+      },
+      {
+        "name": "source_point",
+        "type": "List[Number, Number]",
+        "description": "A 2D coordinate on the moving side to be brought toward target_point."
+      },
+      {
+        "name": "target_point",
+        "type": "List[Number, Number]",
+        "description": "The intended 2D position or x-y projection of source_point after the operation."
+      },
+      {
+        "name": "source_layers",
+        "type": "List",
+        "description": "Visible layers to move at source_point, e.g., [\"all\"], [1], or [1, 2]."
+      },
+      {
+        "name": "theta",
+        "type": "Number",
+        "description": "A non-negative fold angle in degrees."
+      },
+      {
+        "name": "fold_type",
+        "type": "String",
+        "description": "Either \"valley\" or \"mountain\"."
+      }
+    ],
+    "optional_fields": [
+      {
+        "name": "pocket_point",
+        "type": "List[Number, Number]",
+        "description": "A 2D coordinate near the visible insertion location or layer gap. Include this and destination_layer only when this fold also inserts the folded flap into a pocket or layer gap."
+      },
+      {
+        "name": "destination_layer",
+        "type": "List[Integer, Integer]",
+        "description": "Specifies where to insert the point identified by source_point, in terms of the two layers immediately surrounding the insertion position. Layers are counted from top to bottom at pocket_point. The first number is the upper layer and the second is the lower layer; the point is inserted between them. The two values are normally consecutive, such as [1, 2] or [3, 4]."
+      }
+    ]
+  },
+  "additional_conventions": [
+    "Commands are interpreted sequentially.",
+    "After each accepted command, subsequent commands refer to the updated observation.",
+    "Invalid parameter types, ranges, or values return executable: 0.",
+    "If executable is 0, the physical state is unchanged.",
+    "All points are interpreted in the current normalized view coordinate system.",
+    "The current x-y plane is the image plane of the current view; the z-axis points toward the viewer.",
+
+    "fold and make_crease take a non-empty list of fold_infos.",
+    "All fold_infos in one command are interpreted in the same pre-command observation.",
+    "Multiple fold_infos represent simultaneous folds and should be used only for folds intended to occur simultaneously.",
+    "A fold or make_crease command is atomic: if any fold_info is invalid or the fold_infos are physically incompatible, executable is 0 and the physical state is unchanged.",
+
+    "Each fold_info must specify a visible foldable region that lies on, or is sufficiently aligned with, the current x-y plane.",
+    "The alignment tolerance is defined by the simulator; rotate_3d must be used first if the intended fold region is not sufficiently aligned.",
+    "crease_line_edge1 and crease_line_edge2 must be distinct points on the intended visible fold segment.",
+    "A fold_info is invalid if crease_line_edge1 and crease_line_edge2 do not define a valid visible fold segment aligned with the current x-y plane.",
+    "Fold segments in the same fold_infos list may share endpoints, but their interiors must not cross or overlap.",
+
+    "source_point represents the point held or moved by the robot.",
+    "source_point selects the moving side relative to the supporting line through crease_line_edge1 and crease_line_edge2.",
+    "A fold_info is invalid if source_point lies on or too close to the supporting line of its fold segment.",
+    "A fold_info is invalid if the selected moving side or layer stack is not visible or not sufficiently aligned.",
+
+    "target_point specifies the intended result of moving source_point in the pre-command coordinate system.",
+    "For theta = 0, source_point is moved to target_point within the current x-y plane.",
+    "For theta = 0, crease_line_edge1 and crease_line_edge2 specify the crease or hinge segment associated with the in-plane movement.",
+    "For theta = 0, fold_type specifies the intended crease orientation if a crease is formed, but it does not define an out-of-plane rotation.",
+    "For theta = 0, a fold_info is invalid if source_point cannot be moved to target_point in the current x-y plane using the specified crease segment.",
+    "For theta > 0, target_point specifies the intended x-y projection of the folded source_point.",
+    "For 0 < theta < 180, the actual folded source_point lies on the vertical line through target_point; its z-position is determined by theta and fold_type.",
+    "Given crease_line_edge1, crease_line_edge2, source_point, target_point, theta, and fold_type, the simulator checks geometric consistency. If the resulting source_point position or projection is not sufficiently close to target_point, the fold_info is invalid.",
+
+    "Layer indices are local, viewpoint-dependent, 1-based indices counted from top to bottom in the visible stack.",
+    "source_layers are counted at source_point before the command is executed.",
+    "Invisible internal layer ordering does not need to be inferred.",
+    "For layer-specific selection, source_point should be placed on the moving side at or near a visible edge where the layer count can be visually determined.",
+    "source_layers: [1, 2] moves the first and second visible layers from the top; source_layers: [\"all\"] moves all visible layers in the selected stack.",
+    "Unless otherwise permitted, source_layers should be [\"all\"] or an ascending list of layer indices such as [1], [1, 2], or [2].",
+
+    "theta is a non-negative fold angle in degrees; theta = 0 represents an in-plane movement, and theta = 180 represents a full flat fold.",
+    "fold_type is either valley or mountain.",
+    "For theta > 0, fold_type is defined relative to the current top visible surface of the selected stack.",
+    "For theta > 0, a valley fold makes the current top visible surface become the inner side of the fold; a mountain fold rotates in the opposite direction.",
+
+    "fold executes all fold_infos as one simultaneous fold.",
+    "The resulting layer order after fold is determined by the simulator under physical consistency constraints.",
+    "make_crease temporarily folds or moves according to all fold_infos, returns the affected regions to the pre-operation configuration, and preserves the crease marks.",
+
+    "A fold_info may optionally include pocket_point and destination_layer to indicate that, after this fold, the folded flap is also inserted into a pocket or layer gap by locally changing the layer order.",
+    "pocket_point and destination_layer apply only within fold; make_crease returns to the pre-operation configuration and does not support insertion.",
+    "This insertion is a local layer-order operation, not a detailed physical insertion trajectory.",
+    "The flap being inserted is the one identified by this fold_info's source_point; pocket_point selects the visible insertion location or layer gap it is inserted into.",
+    "destination_layer's two layer indices are counted at pocket_point in visible top-to-bottom order, after this fold has been applied.",
+    "A fold_info with pocket_point and destination_layer is executable only when the flap, insertion location, and the two surrounding layers are visible, local, and physically reachable after the fold.",
+    "A fold_info with pocket_point and destination_layer returns executable: 0 if the destination_layer is invalid, requires invisible internal layer reasoning, non-local rearrangement, or physically impossible layer crossing.",
+
+    "rotate_3d physically rotates the entire origami model around its current center of mass, not around the coordinate origin.",
+    "rotate_3d applies extrinsic rotations about the fixed axes of the current view before rotation, in x, y, z order.",
+    "rotate_3d uses the right-hand rule for positive rotation around each axis.",
+    "After rotate_3d, the current view coordinate system and visible layer order are reinterpreted from the updated observation.",
+    "finish terminates the simulation if executable is 1."
+  ],
+  "commands": [
+    {
+      "command_name": "fold",
+      "command_description": "Execute one or more fold_infos as a simultaneous fold.",
+      "Usage": {
+        "required_parameters": [
+          {
+            "name": "fold_infos",
+            "type": "List[Object]",
+            "description": "A non-empty list of fold_info objects."
+          }
+        ]
+      }
+    },
+    {
+      "command_name": "make_crease",
+      "command_description": "Create crease marks by temporarily folding or moving according to one or more fold_infos and returning to the pre-operation configuration.",
+      "Usage": {
+        "required_parameters": [
+          {
+            "name": "fold_infos",
+            "type": "List[Object]",
+            "description": "A non-empty list of fold_info objects."
+          }
+        ]
+      }
+    },
+    {
+      "command_name": "rotate_3d",
+      "command_description": "Physically rotate the entire origami model around its center of mass.",
+      "Usage": {
+        "required_parameters": [
+          {
+            "name": "theta_x",
+            "type": "Number",
+            "description": "Rotation around the current x-axis in degrees, in [-180, 180]."
+          },
+          {
+            "name": "theta_y",
+            "type": "Number",
+            "description": "Rotation around the current y-axis in degrees, in [-180, 180]."
+          },
+          {
+            "name": "theta_z",
+            "type": "Number",
+            "description": "Rotation around the current z-axis in degrees, in [-180, 180]."
+          }
+        ]
+      }
+    },
+    {
+      "command_name": "finish",
+      "command_description": "Finish the simulation.",
+      "Usage": {
+        "required_parameters": []
+      }
+    }
+  ]
+}

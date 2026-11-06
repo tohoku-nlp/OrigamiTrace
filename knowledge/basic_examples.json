@@ -1,0 +1,596 @@
+{
+  "examples": [
+    {
+      "name": "vertical_full_valley_fold_all_layers",
+      "covers": [
+        { "ja": "谷折り", "en": "valley fold" },
+        { "ja": "半分に折る", "en": "half fold" },
+        { "ja": "完全に平らに折る", "en": "flat fold" },
+        { "ja": "全層を折る", "en": "all-layer fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0, -0.9],
+                "crease_line_edge2": [0, 0.9],
+                "source_point": [0.8, 0],
+                "target_point": [-0.8, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "horizontal_full_mountain_fold_top_layer",
+      "covers": [
+        { "ja": "山折り", "en": "mountain fold" },
+        { "ja": "上1枚だけ折る", "en": "top-layer fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.9, 0],
+                "crease_line_edge2": [0.9, 0],
+                "source_point": [0, 0.7],
+                "target_point": [0, -0.7],
+                "source_layers": [1],
+                "theta": 180,
+                "fold_type": "mountain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "diagonal_valley_fold_point_to_point",
+      "covers": [
+        { "ja": "斜め折り", "en": "diagonal fold" },
+        { "ja": "点を点に合わせる折り", "en": "point-to-point fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.8, -0.8],
+                "crease_line_edge2": [0.8, 0.8],
+                "source_point": [0.6, -0.2],
+                "target_point": [-0.2, 0.6],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "edge_to_edge_fold_top_two_layers",
+      "covers": [
+        { "ja": "端を合わせる折り", "en": "edge-to-edge fold" },
+        { "ja": "上2枚を折る", "en": "top-two-layer fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0.25, -0.8],
+                "crease_line_edge2": [0.25, 0.8],
+                "source_point": [0.75, 0],
+                "target_point": [-0.25, 0],
+                "source_layers": [1, 2],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "partial_90_degree_valley_fold",
+      "covers": [
+        { "ja": "途中角度で折る", "en": "partial fold" },
+        { "ja": "谷折り", "en": "valley fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0, -0.8],
+                "crease_line_edge2": [0, 0.8],
+                "source_point": [0.6, 0.2],
+                "target_point": [0, 0.2],
+                "source_layers": [1],
+                "theta": 90,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "partial_45_degree_mountain_fold",
+      "covers": [
+        { "ja": "途中角度で折る", "en": "partial fold" },
+        { "ja": "山折り", "en": "mountain fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.8, 0],
+                "crease_line_edge2": [0.8, 0],
+                "source_point": [0.2, 0.6],
+                "target_point": [0.2, 0.42],
+                "source_layers": ["all"],
+                "theta": 45,
+                "fold_type": "mountain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "vertical_precrease",
+      "covers": [
+        { "ja": "折り目をつける", "en": "precrease" },
+        { "ja": "折って戻す", "en": "fold and unfold" }
+      ],
+      "commands": [
+        {
+          "command_name": "make_crease",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0, -0.9],
+                "crease_line_edge2": [0, 0.9],
+                "source_point": [0.7, 0],
+                "target_point": [-0.7, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "diagonal_precrease_top_layer",
+      "covers": [
+        { "ja": "折り目をつける", "en": "precrease" },
+        { "ja": "上1枚だけ折る", "en": "top-layer fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "make_crease",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.75, 0.75],
+                "crease_line_edge2": [0.75, -0.75],
+                "source_point": [0.5, 0.5],
+                "target_point": [-0.5, -0.5],
+                "source_layers": [1],
+                "theta": 180,
+                "fold_type": "mountain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "in_plane_point_alignment_theta_zero",
+      "covers": [
+        { "ja": "平面内で点を寄せる", "en": "in-plane movement" },
+        { "ja": "点を点に合わせる折り", "en": "point-to-point alignment" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0, -0.7],
+                "crease_line_edge2": [0, 0.7],
+                "source_point": [0.65, 0.25],
+                "target_point": [0.25, 0.25],
+                "source_layers": [1],
+                "theta": 0,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "parallel_simultaneous_pleat",
+      "covers": [
+        { "ja": "段折り", "en": "pleat fold" },
+        { "ja": "平行折り", "en": "parallel folds" },
+        { "ja": "同時折り", "en": "simultaneous fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.4, -0.8],
+                "crease_line_edge2": [-0.4, 0.8],
+                "source_point": [-0.7, 0],
+                "target_point": [-0.1, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              },
+              {
+                "crease_line_edge1": [0.4, -0.8],
+                "crease_line_edge2": [0.4, 0.8],
+                "source_point": [0.7, 0],
+                "target_point": [0.1, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "mountain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "accordion_fold_sequence",
+      "covers": [
+        { "ja": "蛇腹折り", "en": "accordion fold" },
+        { "ja": "段折り", "en": "pleat fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.8, 0.6],
+                "crease_line_edge2": [0.8, 0.6],
+                "source_point": [0, 0.9],
+                "target_point": [0, 0.3],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        },
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.8, 0.2],
+                "crease_line_edge2": [0.8, 0.2],
+                "source_point": [0, -0.2],
+                "target_point": [0, 0.6],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "mountain"
+              }
+            ]
+          }
+        },
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.8, -0.2],
+                "crease_line_edge2": [0.8, -0.2],
+                "source_point": [0, -0.6],
+                "target_point": [0, 0.2],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "kite_base_like_two_side_folds",
+      "covers": [
+        { "ja": "凧形折り", "en": "kite fold / kite base" },
+        { "ja": "端を合わせる折り", "en": "edge-to-edge fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0.5, -0.8],
+                "crease_line_edge2": [0.5, 0.8],
+                "source_point": [1.0, 0],
+                "target_point": [0.0, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        },
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.5, -0.8],
+                "crease_line_edge2": [-0.5, 0.8],
+                "source_point": [-1.0, 0],
+                "target_point": [0.0, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "blintz_four_corner_folds",
+      "covers": [
+        { "ja": "座布団折り", "en": "blintz fold" },
+        { "ja": "点を点に合わせる折り", "en": "point-to-point fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0, 1],
+                "crease_line_edge2": [1, 0],
+                "source_point": [1, 1],
+                "target_point": [0, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        },
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-1, 0],
+                "crease_line_edge2": [0, 1],
+                "source_point": [-1, 1],
+                "target_point": [0, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        },
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-1, 0],
+                "crease_line_edge2": [0, -1],
+                "source_point": [-1, -1],
+                "target_point": [0, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        },
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [0, -1],
+                "crease_line_edge2": [1, 0],
+                "source_point": [1, -1],
+                "target_point": [0, 0],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "triangle_base_diagonal_fold",
+      "covers": [
+        { "ja": "三角ベース", "en": "triangle base" },
+        { "ja": "斜め折り", "en": "diagonal fold" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-1, -1],
+                "crease_line_edge2": [1, 1],
+                "source_point": [0.8, -0.8],
+                "target_point": [-0.8, 0.8],
+                "source_layers": ["all"],
+                "theta": 180,
+                "fold_type": "valley"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "insert_flap_under_visible_layer",
+      "covers": [
+        { "ja": "見える層の下に入れる", "en": "insert under visible layer" },
+        { "ja": "差し込み", "en": "tuck / insert" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.6, 0.25],
+                "crease_line_edge2": [0.6, 0.25],
+                "source_point": [0, 0.75],
+                "target_point": [0, -0.25],
+                "source_layers": [1],
+                "theta": 180,
+                "fold_type": "valley",
+                "pocket_point": [0, 0],
+                "destination_layer": [1, 2]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "insert_flap_between_visible_layers",
+      "covers": [
+        { "ja": "見える層間に差し込む", "en": "insert between visible layers" },
+        { "ja": "差し込み", "en": "tuck / insert" }
+      ],
+      "commands": [
+        {
+          "command_name": "fold",
+          "parameters": {
+            "fold_infos": [
+              {
+                "crease_line_edge1": [-0.35, -0.7],
+                "crease_line_edge2": [-0.35, 0.7],
+                "source_point": [-0.75, 0],
+                "target_point": [0.05, 0],
+                "source_layers": [1],
+                "theta": 180,
+                "fold_type": "valley",
+                "pocket_point": [-0.15, 0],
+                "destination_layer": [1, 2]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "rotate_clockwise_in_image_plane",
+      "covers": [
+        { "ja": "回転", "en": "rotate" }
+      ],
+      "commands": [
+        {
+          "command_name": "rotate_3d",
+          "parameters": {
+            "theta_x": 0,
+            "theta_y": 0,
+            "theta_z": -90
+          }
+        }
+      ]
+    },
+    {
+      "name": "rotate_counterclockwise_in_image_plane",
+      "covers": [
+        { "ja": "回転", "en": "rotate" }
+      ],
+      "commands": [
+        {
+          "command_name": "rotate_3d",
+          "parameters": {
+            "theta_x": 0,
+            "theta_y": 0,
+            "theta_z": 90
+          }
+        }
+      ]
+    },
+    {
+      "name": "flip_over_around_current_x_axis",
+      "covers": [
+        { "ja": "裏返す", "en": "turn over / flip over" }
+      ],
+      "commands": [
+        {
+          "command_name": "rotate_3d",
+          "parameters": {
+            "theta_x": 180,
+            "theta_y": 0,
+            "theta_z": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "flip_over_around_current_y_axis",
+      "covers": [
+        { "ja": "裏返す", "en": "turn over / flip over" }
+      ],
+      "commands": [
+        {
+          "command_name": "rotate_3d",
+          "parameters": {
+            "theta_x": 0,
+            "theta_y": 180,
+            "theta_z": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "reorient_target_region_with_3d_rotation",
+      "covers": [
+        { "ja": "対象面を見える向きにする", "en": "reorient target region" }
+      ],
+      "commands": [
+        {
+          "command_name": "rotate_3d",
+          "parameters": {
+            "theta_x": 35,
+            "theta_y": -20,
+            "theta_z": 0
+          }
+        }
+      ]
+    }
+  ]
+}
