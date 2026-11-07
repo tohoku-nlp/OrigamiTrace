@@ -58,3 +58,16 @@ For each task, the system prompt sent to the controller is the content of `instr
 # Additional useful examples
 <knowledge/additional_useful_examples.json>
 ```
+
+## Citation
+
+```bibtex
+@inproceedings{numaya2026origamitrace,
+  title     = {Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning},
+  author    = {Ikumi Numaya and Reina Akama and Kise Yoshida and Yuka Saito and
+               Sumika Tsuda and Takahiro Shimizu and Miori Sagara and Jun Suzuki},
+  booktitle = {The Fortieth Annual Conference on Neural Information Processing Systems
+               Evaluations and Datasets Track},
+  year      = {2026}
+}
+```
