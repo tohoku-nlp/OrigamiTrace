@@ -5,7 +5,7 @@
 Project page: https://tohoku-nlp.github.io/OrigamiTrace/
 
 This repository contains the materials used in the simulator-based benchmark experiments of the paper: the system prompts, the simulator command specification and command examples, and the fixed messages sent to the LLM controllers.
-The dataset itself is distributed separately through Harvard Dataverse (link coming soon).
+The dataset itself is distributed separately through Harvard Dataverse: https://doi.org/10.7910/DVN/V6T9LX
 
 ## Directory Structure
 
