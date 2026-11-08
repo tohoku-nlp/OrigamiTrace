@@ -8,9 +8,11 @@
   <meta property="og:title" content="OrigamiTrace: Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning">
   <meta property="og:description" content="348 origami designs, 7,221 real images of intermediate folding states, and two state-transition tasks.">
   <meta property="og:image" content="static/images/overview.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="static/images/favicon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
@@ -23,6 +25,7 @@
       --btn-bg: #1b1f24;
       --btn-text: #ffffff;
       --code-bg: #f1f3f5;
+      --title-navy: #162f4b;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
@@ -36,6 +39,7 @@
         --btn-bg: #e7eaee;
         --btn-text: #111418;
         --code-bg: #1d2228;
+        --title-navy: #6d8fbf;
       }
     }
     :root[data-theme="dark"] {
@@ -49,6 +53,7 @@
       --btn-bg: #e7eaee;
       --btn-text: #111418;
       --code-bg: #1d2228;
+      --title-navy: #6d8fbf;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -63,9 +68,13 @@
     a:hover { text-decoration: underline; }
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
     header { padding: 56px 0 24px; text-align: center; }
-    .venue { color: var(--muted); font-size: 14px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 12px; }
+    .venue { font-size: clamp(16px, 2vw, 19px); font-weight: 600; margin: -12px 0 22px; }
     h1 { font-size: clamp(26px, 4.4vw, 40px); line-height: 1.2; margin: 0 0 6px; font-weight: 700; }
-    h1 .name { color: var(--accent); }
+    h1 .name { color: var(--title-navy); font-family: "Fraunces", Georgia, serif; font-weight: 600; }
+    h1 { display: flex; align-items: center; justify-content: center; min-height: 2.9em; margin-bottom: 0; }
+    h1 .name { position: relative; }
+    h1 .logo { position: absolute; right: 100%; top: 50%; transform: translateY(-50%); margin-right: .25em; width: 2.8em; height: 2.8em; }
+    h1 .name b { color: #179f99; font-weight: inherit; }
     .subtitle { font-size: clamp(17px, 2.4vw, 22px); color: var(--muted); margin: 0 0 24px; font-weight: 500; }
     .authors { font-size: 17px; margin: 0 0 6px; }
     .authors span { white-space: nowrap; margin: 0 8px; }
@@ -98,10 +107,11 @@
     .stat span { color: var(--muted); font-size: 13px; }
     .tasks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
     .task { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
-    .task h3 { margin: 0 0 6px; }
+    .task h3 { margin: 0 0 6px; min-height: 3.3em; }
     .task.t1 h3 { color: var(--accent); }
     .task.t2 h3 { color: var(--accent-2); }
     .task p { margin: 0; font-size: 15px; }
+    .task img { width: 100%; height: auto; display: block; border-radius: 6px; margin: 4px 0 12px; }
     .levels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
     .level { text-align: center; font-size: 14px; }
     .level img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
@@ -119,10 +129,48 @@
       padding: 16px; overflow-x: auto; font: 13px/1.55 "JetBrains Mono", ui-monospace, monospace; margin: 0;
     }
     footer { border-top: 1px solid var(--border); padding: 28px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
+    .ex-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0 14px; }
+    .ex-tab {
+      font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; text-align: center;
+      padding: 8px 10px; border-radius: 10px;
+      background: var(--surface); color: var(--text); border: 1px solid var(--border);
+    }
+    .ex-tab span { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+    .ex-tab[aria-selected="true"] { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+    .ex-tab[aria-selected="true"] span { color: inherit; opacity: .75; }
+    .ex-viewer { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .ex-stage { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 20px; align-items: center; }
+    .ex-img { position: relative; aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden; background: var(--border); }
+    .ex-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .ex-step { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+    .ex-label { font-size: 13px; color: var(--muted); margin: 0 0 4px; }
+    .ex-entry { font-size: 18px; line-height: 1.5; margin: 0 0 18px; font-weight: 500; }
+    .ex-entry.done { color: var(--accent-2); }
+    .ex-nav { display: flex; align-items: center; gap: 10px; }
+    .ex-nav button {
+      font: inherit; font-size: 18px; line-height: 1; cursor: pointer;
+      width: 38px; height: 38px; border-radius: 999px; flex: none;
+      background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    }
+    .ex-nav button:disabled { opacity: .35; cursor: default; }
+    .ex-nav input[type="range"] { flex: 1; min-width: 0; accent-color: var(--accent); }
+    .ex-strip { display: flex; gap: 6px; overflow-x: auto; margin-top: 14px; padding-bottom: 4px; }
+    .ex-strip button {
+      flex: none; width: 72px; aspect-ratio: 4 / 3; padding: 0; cursor: pointer;
+      border-radius: 6px; overflow: hidden; border: 2px solid transparent; background: var(--border); opacity: .6;
+    }
+    .ex-strip button[aria-current="true"] { border-color: var(--accent); opacity: 1; }
+    .ex-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 720px) {
+      .ex-tabs { grid-template-columns: repeat(2, 1fr); }
+      .ex-stage { grid-template-columns: 1fr; gap: 12px; }
+      .ex-entry { font-size: 16px; }
+    }
     @media (max-width: 720px) {
       header { padding-top: 36px; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .tasks { grid-template-columns: 1fr; }
+      .task h3 { min-height: 0; }
       .levels { grid-template-columns: repeat(2, 1fr); }
       .abstract p { text-align: left; }
     }
@@ -130,9 +178,9 @@
 </head>
 <body>
   <header class="wrap">
-    <p class="venue">NeurIPS 2026 · Track on Evaluations and Datasets</p>
-    <h1><span class="name">OrigamiTrace</span></h1>
+    <h1><span class="name"><img class="logo" src="static/images/logo.png" alt="" width="512" height="512">Origami<b>Trace</b></span></h1>
     <p class="subtitle">Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning</p>
+    <p class="venue">NeurIPS 2026 Evaluations and Datasets Track</p>
     <p class="authors">
       <span>Ikumi Numaya<sup>1</sup></span>
       <span>Reina Akama<sup>1,2,3</sup></span>
@@ -171,13 +219,13 @@
     <section>
       <figure>
         <img src="static/images/overview.png" alt="Overview of the OrigamiTrace benchmark: a reference image sequence with textual instructions from a start state to a target state, Task 1 where the agent directly receives the procedure, Task 2 where a human instructor guides the agent, and a comparison with prior work." width="2400" height="1258">
-        <figcaption>Overview of the benchmark tasks and how they relate to typical manipulation benchmarks and robotic origami systems.</figcaption>
+        <figcaption>Overview of the proposed benchmark tasks and how they relate to typical manipulation and origami benchmarks.</figcaption>
       </figure>
     </section>
 
     <section class="abstract">
       <h2>Abstract</h2>
-      <p>General-purpose embodied AI systems are increasingly expected to interpret multimodal instructions and perform fine-grained physical tasks. However, many manipulation benchmarks provide limited support for jointly evaluating procedural correctness, local geometric sensitivity, and human-guided correction. We propose origami as a benchmark based on real images for procedural state-transition reasoning. Origami requires precise operations such as tucking, inserting, reversing, and folding overlapping layers, making it a focused domain for studying physical state transitions. We introduce a dataset of step-by-step folding images, textual entries, and difficulty annotations, and we define two tasks, i.e., autonomous state transitions from multimodal instructions and human-guided collaborative transitions. Unlike crease-pattern- or diagram-based origami benchmarks, the proposed benchmark is grounded in photographs of actual intermediate folding states. In an initial simulator-based evaluation, we use three multimodal LLM controllers to evaluate procedural understanding, action-interface grounding, and retry-based correction.</p>
+      <p>General-purpose embodied AI systems are increasingly expected to interpret multimodal instructions and perform fine-grained physical tasks. However, many manipulation benchmarks provide limited support for jointly evaluating procedural correctness, local geometric sensitivity, and human-guided correction. We propose origami as a benchmark based on real images for procedural state-transition reasoning. Origami requires precise operations such as tucking, inserting, reversing, and folding overlapping layers, making it a focused domain for studying physical state transitions. We introduce OrigamiTrace, a dataset of step-by-step folding images, textual entries, and difficulty annotations, and define two tasks, i.e., autonomous state transitions from multimodal instructions and human-guided collaborative transitions. Unlike crease-pattern- or diagram-based origami benchmarks, the proposed benchmark is grounded in photographs of actual intermediate folding states. In an initial simulator-based evaluation, we use three multimodal LLM controllers to evaluate procedural understanding, action-interface grounding, and retry-based correction.</p>
     </section>
 
     <section>
@@ -202,16 +250,41 @@
       </div>
     </section>
 
-    <section>
+    <section id="examples">
+      <h2>Dataset Examples</h2>
+      <p>Browse one origami design from each difficulty level. Each step pairs a captured state image with the textual entry describing the operation that leads to the next state. Dot stickers on the paper serve as fiducial cues: red and blue stickers indicate source and target positions for folds when needed.</p>
+      <div class="ex-tabs" role="tablist" aria-label="Example designs"></div>
+      <div class="ex-viewer">
+        <div class="ex-stage">
+          <div class="ex-img"><img alt=""></div>
+          <div>
+            <p class="ex-step"></p>
+            <p class="ex-label">Textual entry</p>
+            <p class="ex-entry" aria-live="polite"></p>
+            <div class="ex-nav">
+              <button type="button" class="ex-prev" aria-label="Previous step">&#8249;</button>
+              <input type="range" min="0" value="0" aria-label="Step">
+              <button type="button" class="ex-next" aria-label="Next step">&#8250;</button>
+            </div>
+          </div>
+        </div>
+        <div class="ex-strip"></div>
+      </div>
+      <p class="note">Images are downscaled for the web. Use the arrow keys to step through a design. The full dataset is available on <a href="https://doi.org/10.7910/DVN/V6T9LX">Harvard Dataverse</a>.</p>
+    </section>
+
+    <section id="tasks">
       <h2>Tasks</h2>
-      <p>A benchmark instance pairs a start state and a later target state from the same procedure, together with the reference images and textual entries between them.</p>
+      <p>A benchmark episode is formed by selecting a start state and a later target state from the same procedure, together with the corresponding state images and textual entries.</p>
       <div class="tasks">
         <div class="task t1">
           <h3>Task 1: Autonomous Origami State Transition</h3>
+          <img src="static/images/task1.png" alt="Task 1: the agent directly receives the procedure from the dataset, with no human instructor involved." width="1395" height="379" loading="lazy">
           <p>The agent directly receives the reference image sequence, textual instructions, and target state, and must execute each transition. After a failed attempt it receives fixed feedback and may retry.</p>
         </div>
         <div class="task t2">
           <h3>Task 2: Human-Guided Collaborative Origami State Transition</h3>
+          <img src="static/images/task2.png" alt="Task 2: a human instructor who sees the procedure guides the agent in natural language; the agent has no direct access to the dataset." width="1455" height="386" loading="lazy">
           <p>The agent has no direct access to the reference procedure. A human instructor who sees the procedure guides it step by step in natural language, answers clarification questions, and gives corrective feedback.</p>
         </div>
       </div>
@@ -228,12 +301,12 @@
           <tbody>
             <tr class="group"><td colspan="6">Task 1</td></tr>
             <tr><td>GPT 5.6 Sol</td><td>22.7%</td><td>34.1%</td><td>61.3%</td><td>1.68</td><td>38.2%</td></tr>
-            <tr><td>Gemma 4 31B</td><td>3.74%</td><td>6.39%</td><td>26.3%</td><td>2.44</td><td>8.22%</td></tr>
-            <tr><td>Gemma 3 12B IT</td><td>1.72%</td><td>0.758%</td><td>2.77%</td><td>2.93</td><td>2.56%</td></tr>
+            <tr><td>Gemma 4 31B</td><td>3.7%</td><td>6.4%</td><td>26.3%</td><td>2.44</td><td>8.2%</td></tr>
+            <tr><td>Gemma 3 12B IT</td><td>1.7%</td><td>0.8%</td><td>2.8%</td><td>2.93</td><td>2.6%</td></tr>
             <tr class="group"><td colspan="6">Task 2</td></tr>
             <tr><td>GPT 5.6 Sol</td><td>25.6%</td><td>40.3%</td><td>58.5%</td><td>1.69</td><td>50.9%</td></tr>
-            <tr><td>Gemma 4 31B</td><td>3.45%</td><td>8.46%</td><td>28.6%</td><td>2.36</td><td>14.1%</td></tr>
-            <tr><td>Gemma 3 12B IT</td><td>2.87%</td><td>3.03%</td><td>14.3%</td><td>2.69</td><td>4.79%</td></tr>
+            <tr><td>Gemma 4 31B</td><td>3.4%</td><td>8.5%</td><td>28.6%</td><td>2.36</td><td>14.1%</td></tr>
+            <tr><td>Gemma 3 12B IT</td><td>2.9%</td><td>3.0%</td><td>14.3%</td><td>2.69</td><td>4.8%</td></tr>
           </tbody>
         </table>
       </div>
@@ -255,7 +328,95 @@
 
   <footer class="wrap">
     The dataset is released under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.<br>
-    This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    This website is adapted from <a href="https://slvmeval.github.io/">SLVMEval</a> and <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
   </footer>
+  <script id="ex-data" type="application/json">
+[
+{"id": "044_Cat", "name": "Cat", "level": 1, "steps": [["044_Cat__01.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["044_Cat__02.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["044_Cat__03.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["044_Cat__04.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["044_Cat__05.jpg", "Make a valley fold through all layers, from the red dot sticker to the blue dot sticker."], ["044_Cat__06.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["044_Cat__07.jpg", "Turn it over from left to right."], ["044_Cat__08.jpg", "Finished."]]},
+{"id": "001_Long-Horned_Samurai_Helmet", "name": "Long-Horned Samurai Helmet", "level": 2, "steps": [["001_Long-Horned_Samurai_Helmet__01.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["001_Long-Horned_Samurai_Helmet__02.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__03.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__04.jpg", "Turn it over from left to right."], ["001_Long-Horned_Samurai_Helmet__05.jpg", "Make valley folds diagonally from the red dot stickers to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__06.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__07.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__08.jpg", "Make a diagonal valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__09.jpg", "Make a diagonal valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__10.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__11.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["001_Long-Horned_Samurai_Helmet__12.jpg", "Insert from the red dot sticker towards the blue dot sticker into the yellow dot sticker colored slot."], ["001_Long-Horned_Samurai_Helmet__13.jpg", "Finished."]]},
+{"id": "065_Crane", "name": "Crane", "level": 3, "steps": [["065_Crane__01.jpg", "Make a square base from the red dot stickers to the blue dot sticker."], ["065_Crane__02.jpg", "Make valley folds on the top layer, from the red dot stickers to the blue dot sticker to create creases."], ["065_Crane__03.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["065_Crane__04.jpg", "Turn it over from left to right."], ["065_Crane__05.jpg", "Make valley folds on the top layer, from the red dot stickers to the blue dot sticker to create creases."], ["065_Crane__06.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["065_Crane__07.jpg", "Make a valley fold on the top layer so that the red dot sticker overlaps the blue dot sticker to create a diamond shape."], ["065_Crane__08.jpg", "Make valley folds from the red dot stickers to the blue dot sticker."], ["065_Crane__09.jpg", "Turn it over from left to right."], ["065_Crane__10.jpg", "Make a valley fold on the top layer so that the red dot sticker overlaps the blue dot sticker to create a diamond shape."], ["065_Crane__11.jpg", "Make valley folds from the red dot stickers to the blue dot sticker."], ["065_Crane__12.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["065_Crane__13.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["065_Crane__14.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["065_Crane__15.jpg", "While bringing the red dot sticker on the lower layer closer to the blue dot sticker above, spread the red dot sticker on the upper layer to the blue dot sticker below."], ["065_Crane__16.jpg", "Finished."]]},
+{"id": "136_Dragon", "name": "Dragon", "level": 4, "steps": [["136_Dragon__01.jpg", "Make a square base from the red dot stickers to the blue dot sticker."], ["136_Dragon__02.jpg", "Make valley folds on the top layer, from the red dot stickers to the blue dot sticker to create creases."], ["136_Dragon__03.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__04.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker to create a diamond shape."], ["136_Dragon__05.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__06.jpg", "Turn it over from left to right."], ["136_Dragon__07.jpg", "Make valley folds from the red dot stickers to the blue dot sticker to create creases."], ["136_Dragon__08.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker to create a diamond shape."], ["136_Dragon__09.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__10.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__11.jpg", "Pull the second layer from the top, from each red dot sticker toward the nearest blue dot sticker."], ["136_Dragon__12.jpg", "Stand it upright toward you."], ["136_Dragon__13.jpg", "Push in from the red dot sticker toward the blue dot sticker while folding it flat."], ["136_Dragon__14.jpg", "Lay it down away from you."], ["136_Dragon__15.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__16.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__17.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__18.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__19.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__20.jpg", "Hold the red dot sticker part and pull it toward the blue dot sticker while folding it flat."], ["136_Dragon__21.jpg", "Make an inside reverse fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__22.jpg", "Make an inside reverse fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__23.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__24.jpg", "Make an inside reverse fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__25.jpg", "Make an inside reverse fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__26.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__27.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__28.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__29.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__30.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__31.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__32.jpg", "Turn it over from left to right."], ["136_Dragon__33.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__34.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__35.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__36.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__37.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__38.jpg", "Hold the red dot sticker part and pull it toward the blue dot sticker while folding it flat."], ["136_Dragon__39.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__40.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__41.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__42.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__43.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__44.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__45.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__46.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__47.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__48.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__49.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__50.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__51.jpg", "Fold the top layer upright from the red dot sticker toward the blue dot sticker."], ["136_Dragon__52.jpg", "Make a 90-degree valley fold from the red dot sticker toward the blue dot sticker."], ["136_Dragon__53.jpg", "Make a valley fold on the top layer, from the red dot sticker to the blue dot sticker."], ["136_Dragon__54.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__55.jpg", "Fold the top layer upright from the red dot sticker toward the blue dot sticker."], ["136_Dragon__56.jpg", "Make a 90-degree valley fold from the red dot sticker toward the blue dot sticker."], ["136_Dragon__57.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__58.jpg", "Push in from the red dot sticker to the blue dot sticker."], ["136_Dragon__59.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__60.jpg", "Push in from the red dot sticker to the blue dot sticker."], ["136_Dragon__61.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker to create a crease."], ["136_Dragon__62.jpg", "Make an inside reverse fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__63.jpg", "Turn it over from left to right."], ["136_Dragon__64.jpg", "Fold the top layer upright from the red dot sticker toward the blue dot sticker."], ["136_Dragon__65.jpg", "Make a 90-degree valley fold from the red dot sticker toward the blue dot sticker."], ["136_Dragon__66.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__67.jpg", "Make a valley fold from the red dot sticker to the blue dot sticker."], ["136_Dragon__68.jpg", "Fold the top layer upright from the red dot sticker toward the blue dot sticker."], ["136_Dragon__69.jpg", "Make a 90-degree valley fold from the red dot sticker toward the blue dot sticker."], ["136_Dragon__70.jpg", "Finished."]]}
+]
+  </script>
+  <script>
+    (function () {
+      var designs = JSON.parse(document.getElementById("ex-data").textContent);
+      var levels = ["", "Beginner", "Elementary", "Intermediate", "Advanced", "Expert"];
+      var root = document.getElementById("examples");
+      var tabs = root.querySelector(".ex-tabs");
+      var img = root.querySelector(".ex-img img");
+      var stepEl = root.querySelector(".ex-step");
+      var entry = root.querySelector(".ex-entry");
+      var range = root.querySelector('input[type="range"]');
+      var prev = root.querySelector(".ex-prev");
+      var next = root.querySelector(".ex-next");
+      var strip = root.querySelector(".ex-strip");
+      var cur = null, idx = 0;
+
+      function src(d, file) { return "static/images/explorer/" + d.id + "/" + file; }
+
+      function show(i) {
+        var steps = cur.steps;
+        idx = Math.max(0, Math.min(steps.length - 1, i));
+        var s = steps[idx];
+        img.src = src(cur, s[0]);
+        img.alt = cur.name + ", step " + (idx + 1);
+        stepEl.textContent = "Step " + (idx + 1) + " / " + steps.length;
+        entry.textContent = s[1];
+        entry.classList.toggle("done", idx === steps.length - 1);
+        range.value = idx;
+        prev.disabled = idx === 0;
+        next.disabled = idx === steps.length - 1;
+        Array.prototype.forEach.call(strip.children, function (b, j) {
+          b.setAttribute("aria-current", j === idx ? "true" : "false");
+        });
+        var t = strip.children[idx];
+        if (t) strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2, behavior: "smooth" });
+        if (steps[idx + 1]) new Image().src = src(cur, steps[idx + 1][0]);
+      }
+
+      function select(k) {
+        cur = designs[k];
+        Array.prototype.forEach.call(tabs.children, function (b, j) {
+          b.setAttribute("aria-selected", j === k ? "true" : "false");
+        });
+        range.max = cur.steps.length - 1;
+        strip.innerHTML = "";
+        cur.steps.forEach(function (s, j) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.setAttribute("aria-label", "Step " + (j + 1));
+          b.innerHTML = '<img loading="lazy" alt="">';
+          b.firstChild.src = src(cur, s[0]);
+          b.onclick = function () { show(j); };
+          strip.appendChild(b);
+        });
+        strip.scrollLeft = 0;
+        show(0);
+      }
+
+      designs.forEach(function (d, k) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "ex-tab";
+        b.setAttribute("role", "tab");
+        b.innerHTML = d.name + "<span>Level " + d.level + " – " + levels[d.level] + " · " + d.steps.length + " steps</span>";
+        b.onclick = function () { select(k); };
+        tabs.appendChild(b);
+      });
+
+      prev.onclick = function () { show(idx - 1); };
+      next.onclick = function () { show(idx + 1); };
+      range.oninput = function () { show(+range.value); };
+      document.addEventListener("keydown", function (e) {
+        if (e.target === range || e.altKey || e.ctrlKey || e.metaKey) return;
+        var r = root.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        if (e.key === "ArrowLeft") { show(idx - 1); e.preventDefault(); }
+        if (e.key === "ArrowRight") { show(idx + 1); e.preventDefault(); }
+      });
+      select(0);
+    })();
+  </script>
 </body>
 </html>
