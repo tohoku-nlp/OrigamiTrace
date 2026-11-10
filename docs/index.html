@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="only light">
   <title>OrigamiTrace: Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning</title>
   <meta name="description" content="OrigamiTrace is a benchmark of real step-by-step origami images, textual entries, and difficulty annotations for evaluating procedural state-transition reasoning, with autonomous and human-guided tasks.">
   <meta property="og:title" content="OrigamiTrace: Origami as a Real-Image Benchmark for Procedural State-Transition Reasoning">
@@ -26,34 +27,8 @@
       --btn-text: #ffffff;
       --code-bg: #f1f3f5;
       --title-navy: #162f4b;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #111418;
-        --surface: #191d22;
-        --border: #2a3038;
-        --text: #e7eaee;
-        --muted: #9aa3ad;
-        --accent: #7ea6e6;
-        --accent-2: #8cc77a;
-        --btn-bg: #e7eaee;
-        --btn-text: #111418;
-        --code-bg: #1d2228;
-        --title-navy: #6d8fbf;
-      }
-    }
-    :root[data-theme="dark"] {
-      --bg: #111418;
-      --surface: #191d22;
-      --border: #2a3038;
-      --text: #e7eaee;
-      --muted: #9aa3ad;
-      --accent: #7ea6e6;
-      --accent-2: #8cc77a;
-      --btn-bg: #e7eaee;
-      --btn-text: #111418;
-      --code-bg: #1d2228;
-      --title-navy: #6d8fbf;
+      /* always render in light mode, regardless of the OS / browser setting */
+      color-scheme: only light;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -112,6 +87,22 @@
     .task.t2 h3 { color: var(--accent-2); }
     .task p { margin: 0; font-size: 15px; }
     .task img { width: 100%; height: auto; display: block; border-radius: 6px; margin: 4px 0 12px; }
+    .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; margin-top: 14px; }
+    .flow-step h4 { margin: 0 0 6px; font-size: 14px; color: var(--accent); }
+    .flow-media { position: relative; aspect-ratio: 4 / 3; }
+    .flow-step + .flow-step .flow-media::before {
+      content: "→"; position: absolute; left: -24px; top: 50%;
+      transform: translateY(-50%); color: var(--accent); font-weight: 700; font-size: 20px;
+    }
+    .flow-media img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 8px; background: var(--border); }
+    .flow-media img.contain { object-fit: contain; background: #fff; }
+    .flow-media pre {
+      height: 100%; margin: 0; padding: 10px;
+      font-size: 10.5px; line-height: 1.5; display: flex; align-items: center; overflow: hidden;
+    }
+    .flow-step p { margin: 8px 0 0; font-size: 13px; line-height: 1.45; color: var(--muted); }
+    .flow-step .ng { color: #c0392b; font-weight: 700; }
+    .flow-step .ok { color: var(--accent-2); font-weight: 700; }
     .levels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
     .level { text-align: center; font-size: 14px; }
     .level img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
@@ -171,8 +162,16 @@
       .stats { grid-template-columns: repeat(2, 1fr); }
       .tasks { grid-template-columns: 1fr; }
       .task h3 { min-height: 0; }
+      .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 16px; }
+      .flow-step + .flow-step .flow-media::before { display: none; }
       .levels { grid-template-columns: repeat(2, 1fr); }
       .abstract p { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .flow { grid-template-columns: 1fr; }
+      .flow-media { aspect-ratio: auto; }
+      .flow-media img { height: auto; aspect-ratio: 4 / 3; }
+      .flow-media pre { height: auto; font-size: 12px; }
     }
   </style>
 </head>
@@ -286,6 +285,34 @@
           <h3>Task 2: Human-Guided Collaborative Origami State Transition</h3>
           <img src="static/images/task2.png" alt="Task 2: a human instructor who sees the procedure guides the agent in natural language; the agent has no direct access to the dataset." width="1455" height="386" loading="lazy">
           <p>The agent has no direct access to the reference procedure. A human instructor who sees the procedure guides it step by step in natural language, answers clarification questions, and gives corrective feedback.</p>
+        </div>
+      </div>
+      <h3>Example: one Task 1 transition</h3>
+      <div class="flow">
+        <div class="flow-step">
+          <h4>Current state + entry</h4>
+          <div class="flow-media"><img src="static/images/explorer/001_Long-Horned_Samurai_Helmet/001_Long-Horned_Samurai_Helmet__05.jpg" alt="Current state: step 5 of the Long-Horned Samurai Helmet, with red and blue dot stickers." loading="lazy"></div>
+          <p>“Make valley folds diagonally from the red dot stickers to the blue dot sticker.”</p>
+        </div>
+        <div class="flow-step">
+          <h4>Agent output</h4>
+          <div class="flow-media"><pre><code>{"command_name": "fold",
+ "fold_infos": [{
+  "fold_type": "valley",
+  "source_point": [-0.77,0.24],
+  "target_point": [0,-0.53],
+  ...}, {...right side...}]}</code></pre></div>
+          <p>A JSON simulator command with two simultaneous valley folds.</p>
+        </div>
+        <div class="flow-step">
+          <h4>Visualized command</h4>
+          <div class="flow-media"><img class="contain" src="static/images/task1_visualization.jpg" alt="The command drawn on the current image: crease lines marked with crosses, source points with circles, and the shared target point with a diamond." loading="lazy"></div>
+          <p>The command drawn on the current image: crease ×, source ● → target ◆.</p>
+        </div>
+        <div class="flow-step">
+          <h4>Human judge</h4>
+          <div class="flow-media"><img src="static/images/explorer/001_Long-Horned_Samurai_Helmet/001_Long-Horned_Samurai_Helmet__06.jpg" alt="Next reference state: step 6 of the Long-Horned Samurai Helmet." loading="lazy"></div>
+          <p><span class="ng">Attempt 1 ✗</span> “The fold is incorrect. Please regenerate it.”<br><span class="ok">Attempt 2 ✓</span> → next state</p>
         </div>
       </div>
     </section>
