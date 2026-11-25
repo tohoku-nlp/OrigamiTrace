@@ -1,0 +1,55 @@
+{
+  "images": [
+    {
+      "image": "044_Cat__06.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2046.1425863361835,
+        "y": 1645.573629211252
+      },
+      "scale_px_per_normalized_unit": 949.1425863361835,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "044_Cat__07.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 1949.3673894487906,
+        "y": 1664.3924536790842
+      },
+      "scale_px_per_normalized_unit": 909.6326105512094,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "044_Cat__08.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2092.8878528796085,
+        "y": 1728.6582099218065
+      },
+      "scale_px_per_normalized_unit": 1001.1121471203915,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    }
+  ]
+}

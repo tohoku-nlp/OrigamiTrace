@@ -1,0 +1,349 @@
+id,design_name,start_image,target_image,num_transitions,segment_bin
+001,Long-Horned Samurai Helmet,5,13,8,7-10
+002,Boat,6,16,10,7-10
+003,Yacht,7,8,1,1-3
+004,Hopping Frog,20,25,5,4-6
+005,Camera,6,16,10,7-10
+006,Chomper,5,15,10,7-10
+007,Iris,51,53,2,1-3
+008,Medal,12,22,10,7-10
+009,Butterfly,21,31,10,7-10
+010,Sanbo (Offering Stand),5,15,10,7-10
+011,Frog,50,57,7,7-10
+012,Treasure Ship,13,23,10,7-10
+013,Box,14,17,3,1-3
+014,Balloon,14,22,8,7-10
+015,Samurai's Attendant,9,14,5,4-6
+016,Brush Washer,6,16,10,7-10
+017,Square-Folded Letter,15,22,7,7-10
+018,Paper Popper,6,9,3,1-3
+019,Sumo Wrestler,12,16,4,4-6
+020,Traditional Japanese pleated trousers,4,14,10,7-10
+021,Pig,22,24,2,1-3
+022,Penguin,7,17,10,7-10
+023,House,3,9,6,4-6
+024,Dog,3,5,2,1-3
+025,Lipstick Case,12,15,3,1-3
+026,Fox,10,20,10,7-10
+027,Hungry Crow,3,13,10,7-10
+028,Double-Crested Samurai Helmet,1,11,10,7-10
+029,Chinese phoenix,26,32,6,4-6
+030,Ring,15,25,10,7-10
+031,Airplane,10,15,5,4-6
+032,Airplane,6,13,7,7-10
+033,Bellflower,8,18,10,7-10
+034,Kite Airplane,2,12,10,7-10
+035,Navel Paper Plane,8,15,7,7-10
+036,Persimmon,26,29,3,1-3
+037,Snail,32,42,10,7-10
+038,Rose,6,16,10,7-10
+039,Motorboat,23,25,2,1-3
+040,Jar,3,13,10,7-10
+041,Catfish,14,19,5,4-6
+042,Plump Sparrow,21,22,1,1-3
+043,Many Faces,9,16,7,7-10
+044,Cat,6,8,2,1-3
+045,Crane Gift Envelope,16,26,10,7-10
+046,Pigeon,6,11,5,4-6
+047,Celebration Turtle,21,31,10,7-10
+048,Celebration Crane,12,22,10,7-10
+049,Wristwatch,4,14,10,7-10
+050,Dahlia,8,18,10,7-10
+051,Spear plane,5,12,7,7-10
+052,Table,16,26,10,7-10
+053,Table,9,19,10,7-10
+054,Chair,8,18,10,7-10
+055,Sea Lion/Fur Seal,10,20,10,7-10
+056,Red-and-White Crane,5,15,10,7-10
+057,Cat,8,10,2,1-3
+058,Dog,7,10,3,1-3
+059,Boat,11,12,1,1-3
+060,Cicada,9,12,3,1-3
+061,Traditional Japanese Festival Coat,2,12,10,7-10
+062,Lotus Flower,28,34,6,4-6
+063,Fish,4,6,2,1-3
+064,Hat,3,13,10,7-10
+065,Crane,4,14,10,7-10
+066,Boots,4,14,10,7-10
+067,Wallet,5,15,10,7-10
+068,Wallet,4,7,3,1-3
+069,3D Snail,28,38,10,7-10
+070,Ring,6,16,10,7-10
+071,Shirt,5,15,10,7-10
+072,Airplane,5,14,9,7-10
+073,Paper Airplane,1,11,10,7-10
+074,Jet Plane,4,12,8,7-10
+075,Dried-Squid Airplane,6,12,6,4-6
+076,Paper Airplane,3,13,10,7-10
+077,Rose,11,21,10,7-10
+078,Squid Airplane,3,11,8,7-10
+079,Carp Streamer,1,11,10,7-10
+080,Tall Samurai Helmet,11,12,1,1-3
+081,Samurai Helmet,6,10,4,4-6
+082,Leaf/Young Leaf,18,20,2,1-3
+083,Little Bird,7,16,9,7-10
+084,Snow Rabbit,2,12,10,7-10
+085,Balloon Rabbit,10,20,10,7-10
+086,Rabbit,4,14,10,7-10
+087,Rabbit Face,2,8,6,4-6
+088,Ring,14,24,10,7-10
+089,Pinwheel,4,14,10,7-10
+090,Spinning Pinwheel,1,11,10,7-10
+091,Hina Doll (Girl's Day Dolls),6,12,6,4-6
+092,Hina Doll (Girl's Day Dolls),2,12,10,7-10
+093,Hina Doll (Girl's Day Dolls),7,9,2,1-3
+094,Sanbo (Offering Stand) with Legs,16,26,10,7-10
+095,Candy Bowl,5,15,10,7-10
+096,Horned Box,16,26,10,7-10
+097,Horned Box,15,25,10,7-10
+098,Simple Box,11,21,10,7-10
+099,Simple Box,31,32,1,1-3
+100,Simple Box,15,16,1,1-3
+101,Masu (Wooden Sake Cup),12,22,10,7-10
+102,Tatou (Paper folder with flaps) Thread Case,19,22,3,1-3
+103,Tatou (Paper folder with flaps) Case,8,13,5,4-6
+104,Simple Box,15,20,5,4-6
+105,Hexagonal Tatou (Paper folder with flaps),18,26,8,7-10
+106,Octagonal Tatou (Paper folder with flaps),10,20,10,7-10
+107,Tatou (Paper folder with flaps) Case,20,30,10,7-10
+108,Hagoita (Wooden) Paddle,3,10,7,7-10
+109,Camellia,6,16,10,7-10
+110,Bellflower,4,14,10,7-10
+111,Crane Gift Envelope,4,14,10,7-10
+112,Origami Crane,5,15,10,7-10
+113,Cup,5,8,3,1-3
+114,Lion-Dance Finger Puppet,20,23,3,1-3
+115,Animal Finger Puppet,5,13,8,7-10
+116,Spinning Butterfly,5,10,5,4-6
+117,Candy Box,11,21,10,7-10
+118,Carrier Pigeon,1,11,10,7-10
+119,Moving-Mouth Kappa (Japanese River Imp) Puppet,8,9,1,1-3
+120,Ribbon,11,14,3,1-3
+121,Parrot,8,18,10,7-10
+122,Dolphin,3,13,10,7-10
+123,Grasshopper,9,19,10,7-10
+124,Shrimp,7,17,10,7-10
+125,Chicken,7,12,5,4-6
+126,Seismosaurus,26,32,6,4-6
+127,Plesiosaurus,27,37,10,7-10
+128,Brachiosaurus,18,28,10,7-10
+129,Wild Boar,2,12,10,7-10
+130,Waterfowl,2,10,8,7-10
+131,Mammoth,44,54,10,7-10
+132,Spinosaurus,15,25,10,7-10
+133,Pteranodon,5,15,10,7-10
+134,Triceratops,15,25,10,7-10
+135,Tyrannosaurus,12,22,10,7-10
+136,Dragon,31,41,10,7-10
+137,Monkey,16,22,6,4-6
+138,Elephant,4,14,10,7-10
+139,Duck,7,17,10,7-10
+140,Peacock,17,27,10,7-10
+141,Swan,16,20,4,4-6
+142,Crow,10,20,10,7-10
+143,Parakeet,13,16,3,1-3
+144,Panda,8,18,10,7-10
+145,Squirrel,16,26,10,7-10
+146,Penguin,10,20,10,7-10
+147,Mount Fuji,20,30,10,7-10
+148,Four-Leaf Clover,10,20,10,7-10
+149,Acorn,3,13,10,7-10
+150,Japanese Maple,34,40,6,4-6
+151,Ribbon,4,14,10,7-10
+152,Lantern,7,17,10,7-10
+153,Handbag,6,13,7,7-10
+154,Leek,6,16,10,7-10
+155,Daikon Radish,2,12,10,7-10
+156,Mushroom,16,20,4,4-6
+157,Chestnut,6,16,10,7-10
+158,Shaved Ice,24,25,1,1-3
+159,Kagami Mochi (Mirror Rice Cake),11,21,10,7-10
+160,Dress,12,22,10,7-10
+161,One-Piece Dress,27,29,2,1-3
+162,Necktie,4,14,10,7-10
+163,Shirt,9,17,8,7-10
+164,Jacket,4,14,10,7-10
+165,Kimono (Traditional Japanese Garment),3,13,10,7-10
+166,Witch Hat,7,17,10,7-10
+167,Reindeer,22,26,4,4-6
+168,Koma (Spinning Top),4,8,4,4-6
+169,Koma (Spinning Top),6,16,10,7-10
+170,Ema (Wooden prayer plaque),1,11,10,7-10
+171,Musical Note,12,13,1,1-3
+172,Heart,6,10,4,4-6
+173,Star,13,21,8,7-10
+174,Sled,19,22,3,1-3
+175,Candle,23,28,5,4-6
+176,Candle,12,16,4,4-6
+177,Candle,16,17,1,1-3
+178,Gift Box,1,11,10,7-10
+179,Bell,4,13,9,7-10
+180,Bell,10,13,3,1-3
+181,Bell,1,11,10,7-10
+182,Space Shuttle,2,12,10,7-10
+183,Glider,11,16,5,4-6
+184,Daruma (Goal-setting Doll),15,20,5,4-6
+185,Snake,5,15,10,7-10
+186,Pumpkin,3,13,10,7-10
+187,Ghost,1,11,10,7-10
+188,Rabbit,28,38,10,7-10
+189,Flapping Bird,2,12,10,7-10
+190,Basket,39,41,2,1-3
+191,Snow Child,13,19,6,4-6
+192,Sycee,3,13,10,7-10
+193,Dollar Boots,5,15,10,7-10
+194,Cute Letter,4,9,5,4-6
+195,Cute Letter,11,16,5,4-6
+196,Cute Letter,8,12,4,4-6
+197,Heart Letter,2,12,10,7-10
+198,Ladybug,8,11,3,1-3
+199,Chopstick Sleeve,9,12,3,1-3
+200,Teacup,4,10,6,4-6
+201,Jumping Snake,6,16,10,7-10
+202,Truck,3,10,7,7-10
+203,Rocket,5,10,5,4-6
+204,Convertible,5,12,7,7-10
+205,Car,5,10,5,4-6
+206,Car,8,11,3,1-3
+207,Baby Dinosaur,6,16,10,7-10
+208,Parent-and-Child Turtle,6,11,5,4-6
+209,Parent-and-Child Turtle,10,20,10,7-10
+210,Parent-and-Child Penguins,8,15,7,7-10
+211,Four Frogs,21,31,10,7-10
+212,Piggyback Bird,4,14,10,7-10
+213,Parent-and-Child Swans,4,14,10,7-10
+214,Hatching Chick,16,21,5,4-6
+215,Seaweed,7,17,10,7-10
+216,Seaweed,11,21,10,7-10
+217,Ginkgo Leaf,13,14,1,1-3
+218,Morning Glory,14,24,10,7-10
+219,Lion,17,19,2,1-3
+220,Lioness,5,13,8,7-10
+221,Rhinoceros,6,16,10,7-10
+222,Leopard,8,18,10,7-10
+223,Alpaca,3,13,10,7-10
+224,Water Buffalo,20,30,10,7-10
+225,Kangaroo,24,27,3,1-3
+226,Ogre Face,44,50,6,4-6
+227,Lucky Crane,32,42,10,7-10
+228,Camel,14,22,8,7-10
+229,Playful Cat,12,22,10,7-10
+230,White Egret,11,21,10,7-10
+231,Owl,1,11,10,7-10
+232,Shoebill,4,14,10,7-10
+233,Duck,4,14,10,7-10
+234,Flying Duck,13,17,4,4-6
+235,Japanese Bush Warbler,33,37,4,4-6
+236,Peacock,5,15,10,7-10
+237,Dragonfly,20,27,7,7-10
+238,Ramune (Japanese Marble) Soda,4,14,10,7-10
+239,Shaved Ice,14,23,9,7-10
+240,Shaved Ice,9,13,4,4-6
+241,Taiyaki (Fish-shaped Cake),3,11,8,7-10
+242,Soft-Serve Ice Cream,11,14,3,1-3
+243,Drinking Straw,14,15,1,1-3
+244,Shortcake (Sponge Cake with Whipped Cream),5,14,9,7-10
+245,Croissant,2,12,10,7-10
+246,Plate,15,21,6,4-6
+247,Kitchen Knife,8,14,6,4-6
+248,Sailor Suit,3,7,4,4-6
+249,Skirt,5,11,6,4-6
+250,Skirt,8,18,10,7-10
+251,T-Shirt,1,8,7,7-10
+252,One-Piece Dress,11,13,2,1-3
+253,One-Piece Dress,9,13,4,4-6
+254,One-Piece Dress,3,11,8,7-10
+255,One-Piece Dress,9,12,3,1-3
+256,One-Piece Dress,4,14,10,7-10
+257,One-Piece Dress,10,15,5,4-6
+258,One-Piece Dress,11,18,7,7-10
+259,Raincoat,5,14,9,7-10
+260,Polo Shirt,11,14,3,1-3
+261,Swimsuit,2,12,10,7-10
+262,Coat,9,11,2,1-3
+263,Necktie,8,12,4,4-6
+264,Double Heart,18,20,2,1-3
+265,Broken Heart,13,23,10,7-10
+266,Heart Crane,20,30,10,7-10
+267,Winged Heart,6,15,9,7-10
+268,Two-Tone Heart,5,15,10,7-10
+269,Two-Tone Heart,11,18,7,7-10
+270,Kappa (Japanese Water Imp),10,20,10,7-10
+271,Skeleton,3,12,9,7-10
+272,Dracula Face,6,16,10,7-10
+273,Witch Face,8,11,3,1-3
+274,Bat,11,15,4,4-6
+275,Bat,3,9,6,4-6
+276,Number 1,3,13,10,7-10
+277,Number 2,10,20,10,7-10
+278,Number 3,2,12,10,7-10
+279,Number 4,5,12,7,7-10
+280,Number 5,10,18,8,7-10
+281,Number 6,15,17,2,1-3
+282,Number 7,3,13,10,7-10
+283,Number 8,15,18,3,1-3
+284,Number 9,1,11,10,7-10
+285,Trophy,19,22,3,1-3
+286,Parasaurolophus,5,15,10,7-10
+287,Buddhist Monk,6,16,10,7-10
+288,Dwarf,11,18,7,7-10
+289,Tengu (long-nosed goblin),7,17,10,7-10
+290,3D Rabbit,17,27,10,7-10
+291,Simple Star,22,23,1,1-3
+292,Cute Bird,12,22,10,7-10
+293,Sword,21,27,6,4-6
+294,Hummingbird,10,16,6,4-6
+295,Fish,2,12,10,7-10
+296,Glasses,11,13,2,1-3
+297,Book,20,21,1,1-3
+298,Twin Boat,16,26,10,7-10
+299,Tulip,7,9,2,1-3
+300,Bear,8,18,10,7-10
+301,Ogre,8,13,5,4-6
+302,Single Sneaker,20,30,10,7-10
+303,Ladybug,4,11,7,7-10
+304,Organ,2,12,10,7-10
+305,Alphabet A,4,8,4,4-6
+306,Alphabet B,10,11,1,1-3
+307,Alphabet C,1,11,10,7-10
+308,Alphabet D,4,8,4,4-6
+309,Alphabet E,7,8,1,1-3
+310,Alphabet F,6,10,4,4-6
+311,Alphabet G,17,18,1,1-3
+312,Alphabet H,5,7,2,1-3
+313,Alphabet I,1,6,5,4-6
+314,Alphabet J,5,10,5,4-6
+315,Alphabet K,5,7,2,1-3
+316,Alphabet L,1,11,10,7-10
+317,Alphabet M,3,6,3,1-3
+318,Alphabet N,8,11,3,1-3
+319,Alphabet O,7,10,3,1-3
+320,Alphabet P,2,10,8,7-10
+321,Alphabet Q,12,18,6,4-6
+322,Alphabet R,7,9,2,1-3
+323,Alphabet S,8,14,6,4-6
+324,Alphabet T,6,12,6,4-6
+325,Alphabet U,7,16,9,7-10
+326,Alphabet V,5,11,6,4-6
+327,Alphabet W,9,14,5,4-6
+328,Alphabet X,1,11,10,7-10
+329,Alphabet Y,4,14,10,7-10
+330,Alphabet Z,13,15,2,1-3
+331,Minus Sign,6,11,5,4-6
+332,Plus Sign,9,11,2,1-3
+333,Division Sign,7,16,9,7-10
+334,Equals Sign,6,10,4,4-6
+335,Samurai,3,13,10,7-10
+336,Pheasant,16,18,2,1-3
+337,Parakeet,7,17,10,7-10
+338,Eagle,1,11,10,7-10
+339,Horned Owl,14,24,10,7-10
+340,Horned Owl,3,13,10,7-10
+341,Flying Squirrel,3,13,10,7-10
+342,Little Fox,5,15,10,7-10
+343,Chimpanzee,17,21,4,4-6
+344,Anglerfish,17,23,6,4-6
+345,Turban Shell,2,12,10,7-10
+346,Softshell Turtle,17,22,5,4-6
+347,Hermit Crab,8,18,10,7-10
+348,Whale,7,13,6,4-6

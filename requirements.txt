@@ -1,0 +1,4 @@
+# Only needed for tools/normalize_coordinates.py
+numpy
+pillow
+scipy

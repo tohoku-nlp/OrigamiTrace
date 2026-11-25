@@ -1,0 +1,191 @@
+{
+  "images": [
+    {
+      "image": "065_Crane__04.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2113.117326295819,
+        "y": 1536.4577412461267
+      },
+      "scale_px_per_normalized_unit": 721.1173262958191,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__05.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2061.3072421943866,
+        "y": 1507.4150076638464
+      },
+      "scale_px_per_normalized_unit": 721.5849923361536,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__06.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2099.780712767127,
+        "y": 1539.633517832924
+      },
+      "scale_px_per_normalized_unit": 692.7807127671272,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__07.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2057.753327440019,
+        "y": 1764.6122772604465
+      },
+      "scale_px_per_normalized_unit": 698.7533274400189,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__08.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 1968.5961523246694,
+        "y": 1567.6550241135435
+      },
+      "scale_px_per_normalized_unit": 1042.6550241135435,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__09.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2050.512780389707,
+        "y": 1523.892652501871
+      },
+      "scale_px_per_normalized_unit": 1048.892652501871,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__10.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 1951.4146831617184,
+        "y": 1769.7806489764118
+      },
+      "scale_px_per_normalized_unit": 1056.7806489764118,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__11.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2072.3772698713524,
+        "y": 1397.3004301002488
+      },
+      "scale_px_per_normalized_unit": 833.3004301002488,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__12.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2073.651299776691,
+        "y": 1520.2023568894465
+      },
+      "scale_px_per_normalized_unit": 960.7976431105535,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__13.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2031.15745582245,
+        "y": 1409.909176252845
+      },
+      "scale_px_per_normalized_unit": 740.0908237471549,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "065_Crane__14.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4096,
+        "height": 3072
+      },
+      "centroid_px": {
+        "x": 2034.0334980736436,
+        "y": 1445.1977831112233
+      },
+      "scale_px_per_normalized_unit": 471.1977831112233,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    }
+  ]
+}

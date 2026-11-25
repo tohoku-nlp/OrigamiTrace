@@ -1,0 +1,31 @@
+{
+  "models": [
+    {
+      "id": "gpt-5.6-sol",
+      "label": "GPT 5.6 Sol",
+      "api": "openai-chat",
+      "endpoint": "https://api.openai.com/v1/chat/completions",
+      "apiKeyEnv": "OPENAI_API_KEY",
+      "parameters": { "max_completion_tokens": 32000, "reasoning_effort": "low" },
+      "timeoutSeconds": 480
+    },
+    {
+      "id": "google.gemma-4-31b",
+      "label": "Gemma 4 31B",
+      "api": "openai-chat",
+      "endpoint": "https://bedrock-mantle.${AWS_REGION:-us-east-1}.api.aws/openai/v1/chat/completions",
+      "apiKeyEnv": "AWS_BEARER_TOKEN_BEDROCK",
+      "parameters": { "max_completion_tokens": 2048 },
+      "timeoutSeconds": 300
+    },
+    {
+      "id": "google.gemma-3-12b-it",
+      "label": "Gemma 3 12B IT",
+      "api": "bedrock-converse",
+      "endpoint": "https://bedrock-runtime.${AWS_REGION:-us-east-1}.amazonaws.com/model/google.gemma-3-12b-it/converse",
+      "apiKeyEnv": "AWS_BEARER_TOKEN_BEDROCK",
+      "parameters": { "inferenceConfig": { "maxTokens": 2048, "temperature": 0 } },
+      "timeoutSeconds": 300
+    }
+  ]
+}

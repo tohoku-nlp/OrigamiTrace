@@ -1,0 +1,157 @@
+{
+  "images": [
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__05.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2041.1534595908215,
+        "y": 1512.3463236753012
+      },
+      "scale_px_per_normalized_unit": 1389.1534595908215,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__06.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 1964.8956430701353,
+        "y": 1494.8898638985222
+      },
+      "scale_px_per_normalized_unit": 735.1101361014778,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__07.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 1986.9323472149952,
+        "y": 1521.4081103361182
+      },
+      "scale_px_per_normalized_unit": 764.4081103361182,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__08.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2012.283756996702,
+        "y": 1432.9197996446828
+      },
+      "scale_px_per_normalized_unit": 712.9197996446828,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__09.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2042.9806563479478,
+        "y": 1456.820120344135
+      },
+      "scale_px_per_normalized_unit": 722.8201203441349,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__10.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2025.1748367534058,
+        "y": 1403.1388422174543
+      },
+      "scale_px_per_normalized_unit": 615.1748367534058,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__11.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 1280,
+        "height": 960
+      },
+      "centroid_px": {
+        "x": 659.7155471179868,
+        "y": 495.8794684331704
+      },
+      "scale_px_per_normalized_unit": 247.87946843317042,
+      "output_size": {
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__12.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2016.8282506344565,
+        "y": 1431.2085592280498
+      },
+      "scale_px_per_normalized_unit": 662.1717493655435,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "image": "001_Long-Horned_Samurai_Helmet__13.jpg",
+      "status": "generated",
+      "canvas_size": {
+        "width": 4032,
+        "height": 3024
+      },
+      "centroid_px": {
+        "x": 2009.5170994006514,
+        "y": 1363.139492466603
+      },
+      "scale_px_per_normalized_unit": 623.4829005993486,
+      "output_size": {
+        "width": 1600,
+        "height": 1200
+      }
+    }
+  ]
+}
